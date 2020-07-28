@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const items = require('./routes/api/items');
 const path = require('path');
 require('dotenv').config();
 
@@ -21,7 +20,7 @@ mongoose
   .catch((err) => console.log(err));
 
 // Use routes
-app.use('/api/items', items);
+// app.use('/api/items', items);
 
 // Serve Static Assets if in Production
 
