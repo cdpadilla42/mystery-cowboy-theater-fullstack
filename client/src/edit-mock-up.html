@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Update Movies</title>
+    <link rel="stylesheet" href="./css/theater.css" />
+  </head>
+  <body class="update_movies__body">
+    <div class="update_movies__container">
+      <!-- Component Start -->
+      <div class="edit_movie_form">
+        <figure class="edit_movie_form__image_preview">
+          <img src="../public/imgs/cavedwellers.jpg" alt="" />
+        </figure>
+        <section class="edit_movie_form__form">
+          <form action="#">
+            <div class="edit_movie_form__first_row_flex_wrap">
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Name"
+                class="resize-ta"
+              ></input>
+              <input type="text" name="price" id="price" placeholder="Price" />
+            </div>
+            <input type="text" name="image" id="image" placeholder="Image" />
+            <textarea
+              name="description"
+              id="description"
+              placeholder="Description"
+            ></textarea>
+            <button>Delete Movie</button>
+          </form>
+        </section>
+      </div>
+      <!-- Component End -->
+    </div>
+    <!-- Component Start Add Movies -->
+    <!-- Component End Add Movies -->
+    <!-- Add Defaults Button Here -->
+  </body>
+</html>

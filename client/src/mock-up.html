@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Mystery Cowboy Theater</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/theater.css" />
+    <script
+      src="https://kit.fontawesome.com/940fb5f598.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <nav>
+      <div class="nav__container">
+        <a href="/" class="nav__logo">Myster Cowboy Theater</a>
+        <a href="/" class="nav__location">The Domain</a>
+        <ul class="nav__menu">
+          <li><a href="/">Edit Movies</a></li>
+          <li><a href="/">Pick Location</a></li>
+          <li><button>View Order</button></li>
+        </ul>
+        <div class="nav__mobile_content">
+          <button class="nav__hamburger"><i class="fas fa-bars"></i></button>
+        </div>
+      </div>
+    </nav>
+    <div class="mobile_nav">
+      <button class="mobile_nav__close">&times;</button>
+      <a class="mobile_nav__item" href="/">Edit Movies</a>
+      <a class="mobile_nav__item" href="/">Pick Location</a>
+    </div>
+    <main>
+      <section class="movies">
+        <div class="movies__styled_background"></div>
+        <ul class="movies__list">
+          <li>
+            <img src="../public/imgs/cavedwellers.jpg" alt="" tabindex="0" />
+          </li>
+          <li><img src="../public/imgs/eegah.jpg" alt="" tabindex="0" /></li>
+          <li>
+            <img src="../public/imgs/finalsacrifice.jpg" alt="" tabindex="0" />
+          </li>
+          <li><img src="../public/imgs/gamera.jpg" alt="" tabindex="0" /></li>
+          <li>
+            <img src="../public/imgs/Manosposter.jpg" alt="" tabindex="0" />
+          </li>
+          <li>
+            <img src="../public/imgs/podpeople.jpg" alt="" tabindex="0" />
+          </li>
+        </ul>
+      </section>
+      <section class="selected_movie">
+        <div class="selected_movie__image">
+          <img src="../public/imgs/podpeople.jpg" alt="" />
+        </div>
+        <div class="selected_movie__details">
+          <div class="selected_movie__details_wrap">
+            <h3>Pod People</h3>
+            <div class="clear"></div>
+            <h4>About</h4>
+            <p>A movie about FREAKS!</p>
+            <h4>Ticket Price</h4>
+            <p>Ticket Price:</p>
+            <h4>Showing</h4>
+            <p>Date</p>
+            <button class="selected_movie__add_ticket">
+              Purchase Ticket
+            </button>
+          </div>
+        </div>
+      </section>
+      <div class="modal__outside hide">
+        <div class="modal__inner">
+          <section class="cart">
+            <div class="cart__display_items">
+              <div class="cart__item">
+                <div class="cart__remove_item">&times;</div>
+                <div class="cart__item_image"></div>
+                <div class="cart__item_details">
+                  <p>Pod People</p>
+                  <div class="quantity_editor">
+                    <button class="quantity_editor__minus">-</button>
+                    <div class="quantity_editor__quantity">1</div>
+                    <button class="quantity_editor__plus">+</button>
+                  </div>
+                  <p class="cart__item_price">$12.49</p>
+                </div>
+              </div>
+              <div class="cart__item">
+                <div class="cart__remove_item">&times;</div>
+                <div class="cart__item_image"></div>
+                <div class="cart__item_details">
+                  <p>Pod People</p>
+                  <div class="quantity_editor">
+                    <button class="quantity_editor__minus">-</button>
+                    <div class="quantity_editor__quantity">1</div>
+                    <button class="quantity_editor__plus">+</button>
+                  </div>
+                  <p class="cart__item_price">$12.49</p>
+                </div>
+              </div>
+              <div class="cart__item">
+                <div class="cart__remove_item">&times;</div>
+                <div class="cart__item_image"></div>
+                <div class="cart__item_details">
+                  <p>Pod People</p>
+                  <div class="quantity_editor">
+                    <button class="quantity_editor__minus">-</button>
+                    <div class="quantity_editor__quantity">1</div>
+                    <button class="quantity_editor__plus">+</button>
+                  </div>
+                  <p class="cart__item_price">$12.49</p>
+                </div>
+              </div>
+              <div class="cart__item">
+                <div class="cart__remove_item">&times;</div>
+                <div class="cart__item_image"></div>
+                <div class="cart__item_details">
+                  <p>Pod People</p>
+                  <div class="quantity_editor">
+                    <button class="quantity_editor__minus">-</button>
+                    <div class="quantity_editor__quantity">1</div>
+                    <button class="quantity_editor__plus">+</button>
+                  </div>
+                  <p class="cart__item_price">$12.49</p>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div class="cart__pricing_display">
+              <div class="cart__items">
+                <span class="cart__items_quantity">1 item</span
+                ><span class="cart__items_price">$12.49</span>
+              </div>
+              <div class="cart__shipping">
+                <span class="cart__fee">Online Fee</span
+                ><span class="cart__fee_price">$3.00</span>
+              </div>
+              <div class="cart__subtotal">
+                <span class="cart__subtotal">Subtotal</span
+                ><span class="cart__subtotal_price">$16.24</span>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+    <script>
+      const modalEl = document.querySelector('.modal__outside');
+      const
+
+      function openModal() {
+        modalEl.classList.remove('hide');
+      }
+
+      function mobileNav() {
+        const hamburgerEl = document.querySelector('.nav__hamburger');
+        const mobileNavEl = document.querySelector('.mobile_nav');
+        const mobileNavCloseEl = document.querySelector('.mobile_nav__close');
+        if (!hamburgerEl) return;
+
+        function toggleMobileNav() {
+          mobileNavEl.classList.toggle('open');
+        }
+
+        hamburgerEl.addEventListener('click', toggleMobileNav);
+        mobileNavCloseEl.addEventListener('click', toggleMobileNav);
+      }
+
+      mobileNav();
+
+      function modal(modalEl) {
+        if (!modalEl) return;
+
+        function handleClick(e) {
+          console.log(e.target, e.currentTarget);
+          if (e.currentTarget === e.target) {
+            modalEl.classList.add('hide');
+          }
+        }
+
+        modalEl.addEventListener('click', handleClick);
+      }
+
+      modal(modalEl);
+    </script>
+  </body>
+</html>

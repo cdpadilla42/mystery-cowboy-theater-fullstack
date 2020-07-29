@@ -7,7 +7,7 @@ const MovieSchema = new Schema({
     required: true,
   },
   desc: { type: String, required: true },
-  image: { type: String, required: true },
+  image: { type: String, required: true }, // Takes in relative path for image url
   price: { type: String, required: true },
   date: {
     type: Date,

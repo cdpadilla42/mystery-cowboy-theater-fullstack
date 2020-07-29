@@ -1,0 +1,87 @@
+textarea {
+  resize: none;
+}
+
+.theater_app {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.left_pane,
+.card-body,
+.movie_card {
+  background-color: palegoldenrod;
+}
+
+.left_pane {
+  overflow: scroll;
+}
+
+.mid_pane {
+  background-color: aquamarine;
+  overflow: scroll;
+  padding: 0 1rem;
+}
+
+.right_pane {
+  background-color: antiquewhite;
+  overflow: scroll;
+  padding: 0 1rem;
+}
+
+.theater__name,
+.section_heading {
+  text-align: center;
+}
+
+.movie__poster {
+  display: block;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.edit_movie,
+.add_movie {
+  display: grid;
+  grid-template-rows: 40px 80px 40px;
+  grid-template-columns: repeat(3, 33%);
+  margin-bottom: 1rem;
+}
+
+#desc {
+  grid-column: 1 / span 3;
+}
+
+#dlt_btn {
+  grid-column: 1 / span 3;
+  background-color: #fff;
+}
+
+#dlt_btn:hover,
+#order_delete:hover {
+  background-color: #ff7373;
+}
+
+.update_movies:last-child {
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
+
+#order_delete {
+  float: right;
+  background: none;
+  border: none;
+}
+
+.total {
+  border-top: solid 1px black;
+}
+.total:first-child {
+  display: inline-block;
+}
+
+#total_number {
+  float: right;
+}
