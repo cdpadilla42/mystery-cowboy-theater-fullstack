@@ -3,25 +3,33 @@ const router = express.Router();
 const Movie = require('../../models/Movie');
 const Theater = require('../../models/Theater');
 
-// @route   GET api/movies
-// @desc    Get all movies
+// @route   GET api/movies/:theater
+// @desc    Get all movies at given theater
 // @acces   Public
+// TODO Debug - the theater find method is not returning any theaters at all
 router.get('/:theater', async (req, res) => {
-  const theater = await Theater.find({ name: req.params.theater });
+  const theater = await Theater.find({}).exec();
+  res.json({ theater: theater._id });
+
   const movies = await Movie.find({ theater: theater._id }).sort({ date: -1 });
   res.json(movies);
 });
 
+// TODO refactor for theater
 // @route   POST api/movies
 // @desc    post new movies
 // TODO     @acces Private
-router.post('/:theater', (req, res) => {
-  res.json(req.body);
-  const newMovie = new Movie(req.body);
-  newMovie
+router.post('/:theater', async (req, res) => {
+  // res.json({ name: req.params.theater });
+  const theater = await Theater.find({ name: req.params.theater });
+  res.json({ theater });
+  const newMovie = await new Movie({
+    ...req.body,
+    theater: theater._id,
+  })
     .save()
-    .then((movie) => res.json(movie))
     .catch((err) => res.json({ message: err }));
+  res.json(newMovie);
 });
 
 // @route   DELETE api/movies
