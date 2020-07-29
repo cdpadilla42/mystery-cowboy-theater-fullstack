@@ -7,8 +7,9 @@ const Theater = require('../../models/Theater');
 // @desc    Get all movies at given theater
 // @acces   Public
 // TODO Debug - the theater find method is not returning any theaters at all
+// TODO Try this - try creating theaters on this side of things, posting, and then trying to get the theaters. It connects, but isn't accessing a collection
 router.get('/:theater', async (req, res) => {
-  const theater = await Theater.find({}).exec();
+  const theater = await Theater.find({});
   res.json({ theater: theater._id });
 
   const movies = await Movie.find({ theater: theater._id }).sort({ date: -1 });
