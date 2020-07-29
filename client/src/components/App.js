@@ -28,17 +28,25 @@ class App extends React.Component {
       });
     }
 
-    // Update Movies from firebase
-    this.ref = base.syncState(`${params}/movies`, {
-      context: this,
-      state: 'movies',
-    });
+    // // Update Movies from firebase
+    // this.ref = base.syncState(`${params}/movies`, {
+    //   context: this,
+    //   state: 'movies',
+    // });
 
     // Load backend through axios
-    console.log('running axios');
+    console.log('running axios at ' + `/api/${params}`);
     axios
-      .get('/api/movies')
-      .then((movies) => console.log(movies.data))
+      .get(`/api/${params}`)
+      .then((movies) => {
+        console.log(movies.data);
+        const moviesObj = {};
+        movies.data.forEach((movie, i) => (moviesObj[i] = movie));
+        console.log(moviesObj);
+        this.setState({
+          movies: moviesObj,
+        });
+      })
       .catch((err) => console.log(err));
 
     // Add key functionality

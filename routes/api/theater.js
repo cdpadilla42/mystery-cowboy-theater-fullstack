@@ -23,8 +23,6 @@ router.post('/', async (req, res) => {
   res.json(newTheater);
 });
 
-// ! OLD Routes below
-
 // @route   GET api/:theater
 // @desc    Get all movies at a theater
 // @acces   Public
@@ -36,21 +34,21 @@ router.get('/:theater', async (req, res) => {
 });
 
 // @route   POST api/:theater
-// @desc    post new movies
+// @desc    post new movie
 // TODO     @acces Private
 router.post('/:theater', async (req, res) => {
   // res.json(req.body);
   const theater = await Theater.findOne({ name: req.params.theater });
   // res.json({ theater: theater });
-  res.json({ theater: theater._id, ...req.body });
+  // res.json({ theater: theater._id, ...req.body });
   const newMovie = await new Movie({ ...req.body, theater: theater._id })
     .save()
     .catch((err) => res.json({ message: err }));
   res.json(newMovie);
 });
 
-// @route   DELETE api/:theater
-// @desc    delete movies
+// @route   DELETE api/:theater/:id
+// @desc    delete movie
 // TODO     @acces Private
 router.delete('/:theater/:id', (req, res) => {
   Movie.findById(req.params.id)
