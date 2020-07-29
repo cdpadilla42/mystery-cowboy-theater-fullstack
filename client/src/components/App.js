@@ -7,6 +7,7 @@ import MovieDisplay from './MovieDisplay';
 import UpdateMovies from './UpdateMovies';
 import sampleMovies from '../sample-movies';
 import base from '../base';
+import axios from 'axios';
 
 class App extends React.Component {
   state = {
@@ -32,6 +33,13 @@ class App extends React.Component {
       context: this,
       state: 'movies',
     });
+
+    // Load backend through axios
+    console.log('running axios');
+    axios
+      .get('/api/movies')
+      .then((movies) => console.log(movies.data))
+      .catch((err) => console.log(err));
 
     // Add key functionality
     document.addEventListener('keyup', this.handleKeyup);

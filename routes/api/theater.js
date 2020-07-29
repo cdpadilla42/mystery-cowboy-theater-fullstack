@@ -7,8 +7,9 @@ const Theater = require('../../models/Theater');
 // @desc    Get all movies
 // @acces   Public
 router.get('/:theater', async (req, res) => {
+  res.json({ yes: true });
   const theater = await Theater.find({ name: req.params.theater });
-  const movies = await Movie.find({ theater: theater._id }).sort({ date: -1 });
+  const movies = await Movie.find({ theater }).sort({ date: -1 });
   res.json(movies);
 });
 
