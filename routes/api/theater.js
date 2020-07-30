@@ -58,22 +58,14 @@ router.put('/:theater/:movie', async (req, res) => {
     name: req.body.name,
     price: req.body.price,
   };
-  // res.json(updatedMovie);
-  const theater = await Theater.findOne({ name: req.params.theater });
-
   const prevMovie = await Movie.findByIdAndUpdate(
     req.params.movie,
-    {
-      // new object here
-      ...req.body,
-    },
+    updatedMovie,
     {
       // options - returns old object currently
       new: true,
     }
   ).catch((err) => res.json({ success: false }));
-
-  // const prevMovie = await Movie.findById(req.params.movie);
   res.json(prevMovie);
 });
 

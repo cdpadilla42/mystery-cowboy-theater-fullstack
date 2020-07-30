@@ -81,9 +81,20 @@ class UpdateMovies extends Component {
     });
   };
 
-  saveMovieUpdateToDB = (id) => {
+  saveMovieUpdateToDB = async (id) => {
     // TODO Write the API endpoint to take in the change
-    console.log(this.state.movies[id]);
+    const theaterName = this.props.match.params.theaterId;
+
+    const newMovie = await axios
+      .put(
+        `http://localhost:5000/api/${theaterName}/${id}`,
+        this.state.movies[id]
+      )
+      .catch((err) => console.log(err));
+
+    console.log(newMovie);
+
+    // TODO Show that movie has changed and saved
   };
 
   deleteMovie = (movieKey) => {
