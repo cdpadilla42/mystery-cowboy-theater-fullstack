@@ -82,9 +82,8 @@ class UpdateMovies extends Component {
   };
 
   saveMovieUpdateToDB = async (id) => {
-    // TODO Write the API endpoint to take in the change
     const theaterName = this.props.match.params.theaterId;
-
+    this.saveButtonSaving();
     const newMovie = await axios
       .put(
         `http://localhost:5000/api/${theaterName}/${id}`,
@@ -93,8 +92,20 @@ class UpdateMovies extends Component {
       .catch((err) => console.log(err));
 
     console.log(newMovie);
+    if (newMovie) this.saveButtonSuccess();
 
     // TODO Show that movie has changed and saved
+  };
+
+  saveButtonSaving = () => {
+    const saveButton = document.querySelector('#save_btn');
+    saveButton.classList.add('saving');
+  };
+
+  saveButtonSuccess = () => {
+    const saveButton = document.querySelector('#save_btn');
+    saveButton.classList.remove('saving');
+    saveButton.classList.add('save_success');
   };
 
   deleteMovie = (movieKey) => {

@@ -485,6 +485,12 @@ nav .nav__hamburger {
   font-size: 1rem;
   margin: 0.5rem 0;
 }
+.edit_movie_form__form form button.saving {
+  background-color: grey;
+}
+.edit_movie_form__form form button.save_success {
+  background-color: green;
+}
 .edit_movie_form__first_row_flex_wrap {
   display: flex;
   align-items: flex-end;

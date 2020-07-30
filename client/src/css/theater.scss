@@ -599,6 +599,14 @@ nav {
         &:focus {
           @extend %focus;
         }
+
+        &.saving {
+          background-color: grey;
+        }
+
+        &.save_success {
+          background-color: green;
+        }
       }
     }
   }

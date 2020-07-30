@@ -70,7 +70,6 @@ class EditMovieForm extends Component {
               {movie.desc}
             </textarea>
             <button
-              id="dlt_btn"
               onClick={(e) => {
                 e.preventDefault();
                 this.props.deleteMovie(this.props.index);
@@ -79,7 +78,7 @@ class EditMovieForm extends Component {
               Delete Movie
             </button>
             <button
-              id="dlt_btn"
+              id="save_btn"
               onClick={(e) => {
                 e.preventDefault();
                 this.props.saveMovieUpdateToDB(this.props.index);
