@@ -5,6 +5,7 @@ import EditMovieForm from './EditMovieForm';
 import AddMovieForm from './AddMovieForm';
 import Nav from './Nav';
 import base from '../base';
+import axios from 'axios';
 
 class UpdateMovies extends Component {
   state = {
@@ -25,11 +26,25 @@ class UpdateMovies extends Component {
       });
     }
 
-    // Update Movies from firebase
-    this.ref = base.syncState(`${params}/movies`, {
-      context: this,
-      state: 'movies',
-    });
+    // // Update Movies from firebase
+    // this.ref = base.syncState(`${params}/movies`, {
+    //   context: this,
+    //   state: 'movies',
+    // });
+    // Load backend through axios
+    console.log('running axios at ' + `/api/${params}`);
+    axios
+      .get(`/api/${params}`)
+      .then((movies) => {
+        console.log(movies.data);
+        const moviesObj = {};
+        movies.data.forEach((movie, i) => (moviesObj[i] = movie));
+        console.log(moviesObj);
+        this.setState({
+          movies: moviesObj,
+        });
+      })
+      .catch((err) => console.log(err));
 
     // Add key functionality
     document.addEventListener('keyup', this.handleKeyup);
@@ -42,7 +57,7 @@ class UpdateMovies extends Component {
   }
 
   componentWillUnmount() {
-    base.removeBinding(this.ref);
+    // base.removeBinding(this.ref);
   }
 
   addMovie = (movie) => {
