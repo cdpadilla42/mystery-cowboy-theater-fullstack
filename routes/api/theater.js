@@ -51,21 +51,29 @@ router.post('/:theater', async (req, res) => {
 // @desc    update movie
 // TODO     @acces Private
 router.put('/:theater/:movie', async (req, res) => {
+  const updatedMovie = {
+    _id: req.params.movie,
+    desc: req.body.desc,
+    image: req.body.image,
+    name: req.body.name,
+    price: req.body.price,
+  };
+  // res.json(updatedMovie);
   const theater = await Theater.findOne({ name: req.params.theater });
-  const prevMovie = await Movie.findOneAndUpdate(
-    {
-      // Search conditions
-      _id: req.params.movie,
-      theater: theater._id,
-    },
+
+  const prevMovie = await Movie.findByIdAndUpdate(
+    req.params.movie,
     {
       // new object here
       ...req.body,
     },
     {
       // options - returns old object currently
+      new: true,
     }
   ).catch((err) => res.json({ success: false }));
+
+  // const prevMovie = await Movie.findById(req.params.movie);
   res.json(prevMovie);
 });
 
