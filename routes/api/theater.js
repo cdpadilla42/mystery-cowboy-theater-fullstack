@@ -47,6 +47,28 @@ router.post('/:theater', async (req, res) => {
   res.json(newMovie);
 });
 
+// @route   PUT api/:theater/:movie
+// @desc    update movie
+// TODO     @acces Private
+router.put('/:theater/:movie', async (req, res) => {
+  const theater = await Theater.findOne({ name: req.params.theater });
+  const prevMovie = await Movie.findOneAndUpdate(
+    {
+      // Search conditions
+      _id: req.params.movie,
+      theater: theater._id,
+    },
+    {
+      // new object here
+      ...req.body,
+    },
+    {
+      // options - returns old object currently
+    }
+  ).catch((err) => res.json({ success: false }));
+  res.json(prevMovie);
+});
+
 // @route   DELETE api/:theater/:id
 // @desc    delete movie
 // TODO     @acces Private
