@@ -29,5 +29,5 @@ export function formatTime(time) {
   return new Intl.DateTimeFormat('en-us', {
     weekday: 'long',
     hour: 'numeric',
-  }).format(time);
+  }).format(Date.parse(time));
 }

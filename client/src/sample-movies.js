@@ -6,33 +6,6 @@ const movies = {
       'A giant caveman stumbles across modern civilization, then kidnaps a teenage girl and her father.',
     price: 1500,
     showtime: 1589990571180,
-    // Future Feature: Selecting showtimes & Seats
-    // showtimes: {
-    //   showTime1: {
-    //     time: 1589990571180,
-    //     seats: {
-    //       a1: 'available',
-    //       a2: 'unavailable',
-    //       a3: 'available',
-    //     },
-    //   },
-    //   showTime2: {
-    //     time: 1589990668300,
-    //     seats: {
-    //       a1: 'available',
-    //       a2: 'unavailable',
-    //       a3: 'available',
-    //     },
-    //   },
-    //   showTime3: {
-    //     time: 1589990681954,
-    //     seats: {
-    //       a1: 'available',
-    //       a2: 'unavailable',
-    //       a3: 'available',
-    //     },
-    //   },
-    // },
   },
   movie2: {
     name: 'Pod People',

@@ -60,7 +60,7 @@ class App extends React.Component {
   }
 
   componentWillUnmount() {
-    base.removeBinding(this.ref);
+    // base.removeBinding(this.ref);
 
     // remove key listener
     document.removeEventListener('keyup', this.handleKeyup);
