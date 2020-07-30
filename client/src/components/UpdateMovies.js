@@ -38,7 +38,7 @@ class UpdateMovies extends Component {
       .then((movies) => {
         console.log(movies.data);
         const moviesObj = {};
-        movies.data.forEach((movie, i) => (moviesObj[i] = movie));
+        movies.data.forEach((movie) => (moviesObj[movie._id] = movie));
         console.log(moviesObj);
         this.setState({
           movies: moviesObj,
@@ -79,6 +79,10 @@ class UpdateMovies extends Component {
     this.setState({
       movies,
     });
+  };
+
+  saveMovieUpdateToDB = (id) => {
+    console.log(this.state.movies[id]);
   };
 
   deleteMovie = (movieKey) => {
@@ -171,6 +175,7 @@ class UpdateMovies extends Component {
                 key={movieKey}
                 index={movieKey}
                 deleteMovie={this.deleteMovie}
+                saveMovieUpdateToDB={this.saveMovieUpdateToDB}
               />
             );
           })}

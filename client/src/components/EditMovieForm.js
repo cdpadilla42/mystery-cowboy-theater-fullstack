@@ -6,6 +6,7 @@ class EditMovieForm extends Component {
     updateMovie: PropTypes.func,
     movie: PropTypes.object,
     index: PropTypes.string,
+    saveMovieUpdateToDB: PropTypes.func,
   };
 
   handleChange = (e) => {
@@ -70,9 +71,21 @@ class EditMovieForm extends Component {
             </textarea>
             <button
               id="dlt_btn"
-              onClick={() => this.props.deleteMovie(this.props.index)}
+              onClick={(e) => {
+                e.preventDefault();
+                this.props.deleteMovie(this.props.index);
+              }}
             >
               Delete Movie
+            </button>
+            <button
+              id="dlt_btn"
+              onClick={(e) => {
+                e.preventDefault();
+                this.props.saveMovieUpdateToDB(this.props.index);
+              }}
+            >
+              Save Changes
             </button>
           </form>
         </section>

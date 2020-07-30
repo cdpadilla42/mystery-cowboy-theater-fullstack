@@ -41,7 +41,7 @@ class App extends React.Component {
       .then((movies) => {
         console.log(movies.data);
         const moviesObj = {};
-        movies.data.forEach((movie, i) => (moviesObj[i] = movie));
+        movies.data.forEach((movie) => (moviesObj[movie._id] = movie));
         console.log(moviesObj);
         this.setState({
           movies: moviesObj,
