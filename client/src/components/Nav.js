@@ -62,9 +62,9 @@ class Nav extends Component {
                   Edit Movies
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a href="/">Pick Location</a>
-              </li>
+              </li> */}
               {this.props.isAdminPage ? null : this.renderOrderButton()}
             </ul>
             <div className="nav__mobile_content">
@@ -94,9 +94,9 @@ class Nav extends Component {
           >
             Edit Movies
           </a>
-          <a className="mobile_nav__item" href="/">
+          {/* <a className="mobile_nav__item" href="/">
             Pick Location
-          </a>
+          </a> */}
           {this.props.isAdminPage ? null : this.renderOrderButtonMobile()}
         </div>
       </>
