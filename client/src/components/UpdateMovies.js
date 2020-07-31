@@ -106,8 +106,6 @@ class UpdateMovies extends Component {
 
     console.log(newMovie);
     if (newMovie) this.saveButtonSuccess();
-
-    // TODO Show that movie has changed and saved
   };
 
   saveButtonSaving = () => {
@@ -159,6 +157,15 @@ class UpdateMovies extends Component {
     this.setState({
       movies,
     });
+    this.loadSampleMoviesToDB();
+  };
+
+  loadSampleMoviesToDB = () => {
+    console.log('Adding sample movies to DB');
+    Object.keys(sampleMovies).forEach(async (key) => {
+      await this.saveNewMovieToDB(sampleMovies[key]);
+    });
+    console.log('Sample Movies added to DB');
   };
 
   openModalNav = () => {
@@ -207,6 +214,14 @@ class UpdateMovies extends Component {
     );
   };
 
+  renderLoadSampleMoviesBttn = () => {
+    return (
+      <button className="add_sample_movies" onClick={this.loadSampleMovies}>
+        Load Sample Movies
+      </button>
+    );
+  };
+
   render() {
     return (
       <>
@@ -239,9 +254,9 @@ class UpdateMovies extends Component {
             );
           })}
           {this.state.cartModalOpen ? this.renderModal() : null}
-          <button className="add_sample_movies" onClick={this.loadSampleMovies}>
-            Load Sample Movies
-          </button>
+          {Object.keys(this.state.movies).length > 0
+            ? null
+            : this.renderLoadSampleMoviesBttn()}
         </div>
       </>
     );

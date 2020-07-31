@@ -6,6 +6,7 @@ const movies = {
       'A giant caveman stumbles across modern civilization, then kidnaps a teenage girl and her father.',
     price: 1500,
     showtime: 1589990571180,
+    _id: 'movie1',
   },
   movie2: {
     name: 'Pod People',
@@ -14,6 +15,7 @@ const movies = {
       'A child adopts a large egg which hatches into a mischievous alien, while poachers and a group of pop musicians on a wilderness vacation run into trouble.',
     price: 1300,
     // showtime: 1589994571180,
+    _id: 'movie2',
   },
   movie3: {
     name: 'Gamera',
@@ -21,6 +23,7 @@ const movies = {
     desc:
       'A military plane crashes in the Arctic, awakening giant turtle Gamera. It attacks Japan, yet seemingly befriends a young boy.',
     price: 1150,
+    _id: 'movie3',
   },
   movie4: {
     name: 'Cave Dwellers',
@@ -28,6 +31,7 @@ const movies = {
     desc:
       'In the first sequel to Ator, the Fighting Eagle, Ator helps a warrior woman rescue her father from an evil overlord.',
     price: 1500,
+    _id: 'movie4',
     // showtime: 15899905741180,
   },
   movie5: {
@@ -36,6 +40,7 @@ const movies = {
     desc:
       'Martians abduct Santa Claus and two human children in hopes of bringing Christmas to their planet.',
     price: 1300,
+    _id: 'movie5',
     // showtime: 15893905741180,
   },
   movie6: {
@@ -44,6 +49,7 @@ const movies = {
     desc:
       'A hapless family on a car trip in rural Texas take refuge at an inn that harbors a deadly cult.',
     price: 1800,
+    _id: 'movie6',
     // showtime: 15899945741180,
   },
   movie7: {
@@ -51,6 +57,7 @@ const movies = {
     image: '/imgs/werewolf.jpg',
     desc: 'After digging up strange bones, a man becomes a werewolf!',
     price: 1200,
+    _id: 'movie7',
     // showtime: 15899905751180,
   },
   movie8: {
@@ -59,6 +66,7 @@ const movies = {
     desc:
       'A teen follows a map left for him by his long-dead father, runs afoul of an evil cult, then teams up with a beer-guzzling drifter who has a secret.',
     price: 1500,
+    _id: 'movie8',
     // showtime: 15894905741180,
   },
 };
