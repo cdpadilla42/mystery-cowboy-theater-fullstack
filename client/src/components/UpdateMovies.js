@@ -160,9 +160,9 @@ class UpdateMovies extends Component {
     this.loadSampleMoviesToDB();
   };
 
-  loadSampleMoviesToDB = () => {
+  loadSampleMoviesToDB = async () => {
     console.log('Adding sample movies to DB');
-    Object.keys(sampleMovies).forEach(async (key) => {
+    await Object.keys(sampleMovies).forEach(async (key) => {
       await this.saveNewMovieToDB(sampleMovies[key]);
     });
     console.log('Sample Movies added to DB');
