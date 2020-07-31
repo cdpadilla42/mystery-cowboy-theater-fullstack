@@ -100,12 +100,21 @@ class UpdateMovies extends Component {
   saveButtonSaving = () => {
     const saveButton = document.querySelector('#save_btn');
     saveButton.classList.add('saving');
+    saveButton.textContent = 'Saving...';
   };
 
   saveButtonSuccess = () => {
     const saveButton = document.querySelector('#save_btn');
     saveButton.classList.remove('saving');
     saveButton.classList.add('save_success');
+    saveButton.textContent = 'Changes Saved!';
+    setTimeout(this.revertSaveButton, 3000);
+  };
+
+  revertSaveButton = () => {
+    const saveButton = document.querySelector('#save_btn');
+    saveButton.classList.remove('save_success');
+    saveButton.textContent = 'Save Changes!';
   };
 
   deleteMovie = (movieKey) => {
