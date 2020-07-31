@@ -99,7 +99,7 @@ router.put('/:theater/:movie', [
   // Sanitize
   sanitizeBody('name').escape(),
   sanitizeBody('desc').escape(),
-  sanitizeBody('image').escape(),
+  sanitizeBody('image'),
   sanitizeBody('price').escape(),
   async (req, res) => {
     const errors = validationResult(req);
