@@ -79,7 +79,7 @@ class UpdateMovies extends Component {
   saveNewMovieToDB = async (movie) => {
     const theaterName = this.props.match.params.theaterId;
     const newMovie = await axios
-      .post(`http://localhost:5000/api/${theaterName}`, movie)
+      .post(`/api/${theaterName}`, movie)
       .catch((err) => console.log(err));
     console.log(newMovie);
   };
@@ -98,10 +98,7 @@ class UpdateMovies extends Component {
     const theaterName = this.props.match.params.theaterId;
     this.saveButtonSaving();
     const newMovie = await axios
-      .put(
-        `http://localhost:5000/api/${theaterName}/${id}`,
-        this.state.movies[id]
-      )
+      .put(`/api/${theaterName}/${id}`, this.state.movies[id])
       .catch((err) => console.log(err));
 
     console.log(newMovie);
@@ -137,7 +134,7 @@ class UpdateMovies extends Component {
     const theaterName = this.props.match.params.theaterId;
     console.log(`Deleting ${movieKey} from DB`);
     const wasSuccessful = await axios
-      .delete(`http://localhost:5000/api/${theaterName}/${movieKey}`)
+      .delete(`/api/${theaterName}/${movieKey}`)
       .catch((err) => console.log(err));
     console.log(wasSuccessful);
   };
@@ -160,9 +157,9 @@ class UpdateMovies extends Component {
     this.loadSampleMoviesToDB();
   };
 
-  loadSampleMoviesToDB = async () => {
+  loadSampleMoviesToDB = () => {
     console.log('Adding sample movies to DB');
-    await Object.keys(sampleMovies).forEach(async (key) => {
+    Object.keys(sampleMovies).forEach(async (key) => {
       await this.saveNewMovieToDB(sampleMovies[key]);
     });
     console.log('Sample Movies added to DB');
