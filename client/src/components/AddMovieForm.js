@@ -7,6 +7,10 @@ class AddMovieForm extends Component {
     closeModalNav: PropTypes.func,
   };
 
+  state = {
+    image: '/imgs/default-poster.jpg',
+  };
+
   nameRef = React.createRef();
   descriptionRef = React.createRef();
   priceRef = React.createRef();
@@ -19,7 +23,7 @@ class AddMovieForm extends Component {
       name: this.nameRef.current.value,
       desc: this.descriptionRef.current.value,
       price: parseInt(this.priceRef.current.value),
-      image: this.imageRef.current.value,
+      image: this.state.image,
     };
     console.log(movie);
     this.props.addMovie(movie);
@@ -57,8 +61,9 @@ class AddMovieForm extends Component {
             name="image"
             id="image"
             placeholder="Image"
-            ref={this.imageRef}
+            // ref={this.imageRef}
             onChange={this.handleChange}
+            value={this.state.image}
           />
           <textarea
             name="description"
