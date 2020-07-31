@@ -61,6 +61,11 @@ class UpdateMovies extends Component {
   }
 
   addMovie = (movie) => {
+    this.saveNewMovieToState(movie);
+    this.saveNewMovieToDB(movie);
+  };
+
+  saveNewMovieToState = (movie) => {
     const movieKey = `movie${Date.now()}`;
     const movies = {
       ...this.state.movies,
@@ -69,6 +74,14 @@ class UpdateMovies extends Component {
     this.setState({
       movies,
     });
+  };
+
+  saveNewMovieToDB = async (movie) => {
+    const theaterName = this.props.match.params.theaterId;
+    const newMovie = await axios
+      .post(`http://localhost:5000/api/${theaterName}`, movie)
+      .catch((err) => console.log(err));
+    console.log(newMovie);
   };
 
   updateMovie = (movie, movieKey) => {
@@ -114,10 +127,19 @@ class UpdateMovies extends Component {
   revertSaveButton = () => {
     const saveButton = document.querySelector('#save_btn');
     saveButton.classList.remove('save_success');
-    saveButton.textContent = 'Save Changes!';
+    saveButton.textContent = 'Save Changes';
   };
 
   deleteMovie = (movieKey) => {
+    this.deleteMovieFromState(movieKey);
+    this.deleteMovieFromDB(movieKey);
+  };
+
+  deleteMovieFromDB = (movieKey) => {
+    console.log(`Deleting ${movieKey} from DB`);
+  };
+
+  deleteMovieFromState = (movieKey) => {
     const movies = {
       ...this.state.movies,
       [movieKey]: null,
