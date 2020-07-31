@@ -40,7 +40,7 @@ const movies = {
   },
   movie6: {
     name: 'Manos: The Hands of Fate',
-    image: '/imgs/manosposter.jpg',
+    image: '/imgs/default-poster.jpg',
     desc:
       'A hapless family on a car trip in rural Texas take refuge at an inn that harbors a deadly cult.',
     price: 1800,
