@@ -89,24 +89,41 @@ router.post('/:theater', [
 // @route   PUT api/:theater/:movie
 // @desc    update movie
 // TODO     @acces Private
-router.put('/:theater/:movie', async (req, res) => {
-  const updatedMovie = {
-    _id: req.params.movie,
-    desc: req.body.desc,
-    image: req.body.image,
-    name: req.body.name,
-    price: req.body.price,
-  };
-  const prevMovie = await Movie.findByIdAndUpdate(
-    req.params.movie,
-    updatedMovie,
-    {
-      // options - returns old object currently
-      new: true,
+router.put('/:theater/:movie', [
+  // Validate
+  body('name', 'Name required').trim().isLength({ min: 1 }),
+  body('desc', 'Description required').trim().isLength({ min: 1 }),
+  body('image', 'Image required').trim().isLength({ min: 1 }),
+  body('price', 'Price required').trim().isLength({ min: 1 }),
+
+  // Sanitize
+  sanitizeBody('name').escape(),
+  sanitizeBody('desc').escape(),
+  sanitizeBody('image').escape(),
+  sanitizeBody('price').escape(),
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.json({ errors });
     }
-  ).catch((err) => res.json({ success: false }));
-  res.json(prevMovie);
-});
+    const updatedMovie = {
+      _id: req.params.movie,
+      desc: req.body.desc,
+      image: req.body.image,
+      name: req.body.name,
+      price: req.body.price,
+    };
+    const prevMovie = await Movie.findByIdAndUpdate(
+      req.params.movie,
+      updatedMovie,
+      {
+        // options - returns old object currently
+        new: true,
+      }
+    ).catch((err) => res.json({ success: false }));
+    res.json(prevMovie);
+  },
+]);
 
 // @route   DELETE api/:theater/:id
 // @desc    delete movie
