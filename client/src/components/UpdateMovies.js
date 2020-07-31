@@ -135,15 +135,20 @@ class UpdateMovies extends Component {
     this.deleteMovieFromDB(movieKey);
   };
 
-  deleteMovieFromDB = (movieKey) => {
+  deleteMovieFromDB = async (movieKey) => {
+    const theaterName = this.props.match.params.theaterId;
     console.log(`Deleting ${movieKey} from DB`);
+    const wasSuccessful = await axios
+      .delete(`http://localhost:5000/api/${theaterName}/${movieKey}`)
+      .catch((err) => console.log(err));
+    console.log(wasSuccessful);
   };
 
   deleteMovieFromState = (movieKey) => {
     const movies = {
       ...this.state.movies,
-      [movieKey]: null,
     };
+    delete movies[movieKey];
     this.setState({
       movies,
     });
