@@ -18,11 +18,8 @@ router.get('/', async (req, res) => {
 // @desc    Post new theater
 // TODO     @acces   Private
 router.post('/', [
-  // Validate
-  body('name', 'Name Required').trim().isLength({ min: 1 }),
-
-  // Sanitize
-  sanitizeBody('name').escape(),
+  // Validate & Sanitize
+  body('name', 'Name Required').trim().isLength({ min: 1 }).escape(),
 
   // Process
   async (req, res) => {
@@ -59,16 +56,10 @@ router.get('/:theater', [
 // TODO     @acces Private
 router.post('/:theater', [
   // Validate
-  body('name', 'Name required').trim().isLength({ min: 1 }),
-  body('desc', 'Description required').trim().isLength({ min: 1 }),
+  body('name', 'Name required').trim().isLength({ min: 1 }).escape(),
+  body('desc', 'Description required').trim().isLength({ min: 1 }).escape(),
   body('image', 'Image required').trim().isLength({ min: 1 }),
-  body('price', 'Price required').trim().isLength({ min: 1 }),
-
-  // Sanitize
-  sanitizeBody('name').escape(),
-  sanitizeBody('desc').escape(),
-  sanitizeBody('image').escape(),
-  sanitizeBody('price').escape(),
+  body('price', 'Price required').trim().isLength({ min: 1 }).escape(),
 
   // process request
   async (req, res) => {
@@ -78,7 +69,6 @@ router.post('/:theater', [
     }
 
     const theater = await Theater.findOne({ name: req.params.theater });
-    // res.json({ theat: theater._id, ...req.body });
     const newMovie = await new Movie({ ...req.body, theater: theater._id })
       .save()
       .catch((err) => res.json({ message: err }));
@@ -91,16 +81,11 @@ router.post('/:theater', [
 // TODO     @acces Private
 router.put('/:theater/:movie', [
   // Validate
-  body('name', 'Name required').trim().isLength({ min: 1 }),
-  body('desc', 'Description required').trim().isLength({ min: 1 }),
+  body('name', 'Name required').trim().isLength({ min: 1 }).escape(),
+  body('desc', 'Description required').trim().isLength({ min: 1 }).escape(),
   body('image', 'Image required').trim().isLength({ min: 1 }),
-  body('price', 'Price required').trim().isLength({ min: 1 }),
+  body('price', 'Price required').trim().isLength({ min: 1 }).escape(),
 
-  // Sanitize
-  sanitizeBody('name').escape(),
-  sanitizeBody('desc').escape(),
-  sanitizeBody('image'),
-  sanitizeBody('price').escape(),
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
