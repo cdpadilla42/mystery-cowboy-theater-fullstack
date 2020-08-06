@@ -1,4 +1,7 @@
 const express = require('express');
+const session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
@@ -14,15 +17,28 @@ app.use(cors());
 // DB Config
 
 const db = process.env.DB_URI;
+db.on('error', console.error.bind(console, 'Mongo Connection Error'));
 
 // Connect to Mongo
 mongoose
-  .connect(db, { useNewUrlParser: true })
+  .connect(db, { useUnifiedTopology: true, useNewUrlParser: true })
   .then(() => console.log('MongoDB Connected'))
   .catch((err) => console.log(err));
 
 // Use routes
 app.use('/api', theaterRoutes);
+
+// Use Passport for sessions
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.urlencoded({ extended: false }));
 
 // Serve Static Assets if in Production
 
