@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const userRoutes = require('./user');
 const Movie = require('../../models/Movie');
 const Theater = require('../../models/Theater');
 const { body, sanitizeBody, validationResult } = require('express-validator');
@@ -34,6 +35,8 @@ router.post('/', [
     res.json(newTheater);
   },
 ]);
+
+router.use('/users', userRoutes);
 
 // @route   GET api/:theater
 // @desc    Get all movies at a theater
