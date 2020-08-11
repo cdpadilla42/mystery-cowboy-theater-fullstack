@@ -5,6 +5,7 @@ import App from './App';
 import Order from './Order';
 import NotFound from './NotFound';
 import UpdateMovies from './UpdateMovies';
+import LoginPage from './LoginPage';
 
 const Router = () => {
   return (
@@ -17,6 +18,7 @@ const Router = () => {
           path="/theater/:theaterId/update-movies"
           component={UpdateMovies}
         />
+        <Route exact path="/login" component={LoginPage} />
 
         <Route component={NotFound} />
       </Switch>

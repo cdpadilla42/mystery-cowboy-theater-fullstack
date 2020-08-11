@@ -17,7 +17,7 @@ app.use(cors());
 // DB Config
 
 const db = process.env.DB_URI;
-db.on('error', console.error.bind(console, 'Mongo Connection Error'));
+// db.on('error', console.error.bind(console, 'Mongo Connection Error'));
 
 // Connect to Mongo
 mongoose
