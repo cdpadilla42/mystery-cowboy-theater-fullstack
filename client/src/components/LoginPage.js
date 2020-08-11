@@ -13,6 +13,9 @@ class LoginPage extends Component {
 
   handleFormSubmit = (e) => {
     e.preventDefault();
+    const username = this.usernameRef.current.value;
+    const pw = this.pwRef.current.value;
+    console.log(username, pw);
     // // store theater name
     // const theaterName = this.theaterNameRef.current.value;
     // this.props.history.push(`/theater/${theaterName}`);
@@ -34,7 +37,7 @@ class LoginPage extends Component {
           </label>
           <label htmlFor="pw" className="login_page__field">
             <span className="login_page__label">Password</span>
-            <input type="password" name="pw" id="pw" ref={this.pw} />
+            <input type="password" name="pw" id="pw" ref={this.pwRef} />
           </label>
           <div className="login_page__button_container">
             <button type="submit" className="login_page__login_button">
