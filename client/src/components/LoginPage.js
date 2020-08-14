@@ -12,14 +12,26 @@ class LoginPage extends Component {
   usernameRef = React.createRef();
   pwRef = React.createRef();
 
-  handleFormSubmit = (e) => {
+  handleFormSubmit = async (e) => {
+    // TODO Handle bad logins
+
     e.preventDefault();
     const username = this.usernameRef.current.value;
-    const pw = this.pwRef.current.value;
-    console.log(username, pw);
-    // // store theater name
-    // const theaterName = this.theaterNameRef.current.value;
-    // this.props.history.push(`/theater/${theaterName}`);
+    const password = this.pwRef.current.value;
+    console.log(username, password);
+    const payload = await axios
+      .post('api/users/login', {
+        username,
+        password,
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    console.log(payload);
+    const { token, user } = payload.data;
+    console.log(token, user);
+    this.props.history.push(`/theater/The-Domain/update-movies`);
   };
 
   render() {
