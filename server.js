@@ -58,8 +58,9 @@ passport.use(
       secretOrKey: process.env.JWT_SECRET,
     },
     function (jwtPayload, cb) {
+      return cb(null, { success: true });
       //find the user in db if needed. This functionality may be omitted if you store everything you'll need in JWT payload.
-      return UserModel.findOneById(jwtPayload.id)
+      return User.findOneById(jwtPayload.id)
         .then((user) => {
           return cb(null, user);
         })
@@ -85,7 +86,7 @@ passport.use(
 // Use routes
 app.use('/api', theaterRoutes);
 app.use(
-  '/api/secret',
+  '/secret',
   passport.authenticate('jwt', { session: false }),
   secretRoutes
 );
