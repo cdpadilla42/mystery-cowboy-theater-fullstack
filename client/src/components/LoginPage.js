@@ -12,6 +12,12 @@ class LoginPage extends Component {
   usernameRef = React.createRef();
   pwRef = React.createRef();
 
+  // write safe handleFormSubmit
+
+  safeHandleFormSubmit = async (e) => {
+    return this.handleFormSubmit(e).catch((err) => console.error(err));
+  };
+
   handleFormSubmit = async (e) => {
     // TODO Handle bad logins
 
@@ -19,14 +25,10 @@ class LoginPage extends Component {
     const username = this.usernameRef.current.value;
     const password = this.pwRef.current.value;
     console.log(username, password);
-    const payload = await axios
-      .post('api/users/login', {
-        username,
-        password,
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const payload = await axios.post('api/users/login', {
+      username,
+      password,
+    });
 
     console.log(payload);
     const { token, user } = payload.data;
@@ -38,7 +40,7 @@ class LoginPage extends Component {
     return (
       <div className="login_page__container">
         <h1 className="login_page__heading">Chose your theater</h1>
-        <form onSubmit={this.handleFormSubmit} className="login_page__form">
+        <form onSubmit={this.safeHandleFormSubmit} className="login_page__form">
           <label className="login_page__field" htmlFor="username">
             <span className="login_page__label">Username</span>
             <input
