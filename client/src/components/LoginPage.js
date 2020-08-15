@@ -3,24 +3,27 @@ import PropTypes from 'prop-types';
 import Nav from './Nav';
 import axios from 'axios';
 
-// TODO ------------------------------------
-// TODO Update this from the boiler plate to desired view
-// TODO ------------------------------------
-
 class LoginPage extends Component {
+  state = {
+    loginErr: false,
+  };
+
   theaterNameRef = React.createRef();
   usernameRef = React.createRef();
   pwRef = React.createRef();
-
-  // write safe handleFormSubmit
+  submitBttnRef = React.createRef();
 
   safeHandleFormSubmit = async (e) => {
-    return this.handleFormSubmit(e).catch((err) => console.error(err));
+    return this.handleFormSubmit(e).catch((err) => {
+      console.error(err);
+      this.displayLoginErr();
+      setTimeout(() => {
+        this.setState({ loginErr: false });
+      }, 5000);
+    });
   };
 
   handleFormSubmit = async (e) => {
-    // TODO Handle bad logins
-
     e.preventDefault();
     const username = this.usernameRef.current.value;
     const password = this.pwRef.current.value;
@@ -34,6 +37,12 @@ class LoginPage extends Component {
     const { token, user } = payload.data;
     console.log(token, user);
     this.props.history.push(`/theater/The-Domain/update-movies`);
+  };
+
+  displayLoginErr = () => {
+    this.setState({
+      loginErr: true,
+    });
   };
 
   render() {
@@ -55,8 +64,12 @@ class LoginPage extends Component {
             <input type="password" name="pw" id="pw" ref={this.pwRef} />
           </label>
           <div className="login_page__button_container">
-            <button type="submit" className="login_page__login_button">
-              Login
+            <button
+              type="submit"
+              className="login_page__login_button"
+              ref={this.submitBttnRef}
+            >
+              {this.state.loginErr ? 'Error' : 'Login'}
             </button>
           </div>
         </form>
