@@ -563,5 +563,9 @@ nav .nav__hamburger {
   display: flex;
   justify-content: center;
 }
+.login_page__login_button.fail {
+  color: black;
+  background-color: #ff8c69;
+}
 
 /*# sourceMappingURL=theater.css.map */

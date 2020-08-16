@@ -706,5 +706,10 @@ nav {
 
   &__login_button {
     @extend %button;
+
+    &.fail {
+      color: black;
+      background-color: #ff8c69;
+    }
   }
 }

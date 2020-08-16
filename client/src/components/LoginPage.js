@@ -66,7 +66,11 @@ class LoginPage extends Component {
           <div className="login_page__button_container">
             <button
               type="submit"
-              className="login_page__login_button"
+              className={
+                this.state.loginErr
+                  ? 'login_page__login_button fail'
+                  : 'login_page__login_button'
+              }
               ref={this.submitBttnRef}
             >
               {this.state.loginErr ? 'Error' : 'Login'}
