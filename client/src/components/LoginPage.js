@@ -4,6 +4,10 @@ import Nav from './Nav';
 import axios from 'axios';
 
 class LoginPage extends Component {
+  static propTypes = {
+    storeUser: PropTypes.func,
+  };
+
   state = {
     loginErr: false,
   };
@@ -28,7 +32,7 @@ class LoginPage extends Component {
     const username = this.usernameRef.current.value;
     const password = this.pwRef.current.value;
     console.log(username, password);
-    const payload = await axios.post('api/users/login', {
+    const payload = await axios.post('../../api/users/login', {
       username,
       password,
     });
@@ -36,7 +40,8 @@ class LoginPage extends Component {
     console.log(payload);
     const { token, user } = payload.data;
     console.log(token, user);
-    this.props.history.push(`/theater/The-Domain/update-movies`);
+    this.props.storeUser(user, token);
+    // this.props.history.push(`/theater/The-Domain/update-movies`);
   };
 
   displayLoginErr = () => {
