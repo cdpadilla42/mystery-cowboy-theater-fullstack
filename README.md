@@ -18,7 +18,9 @@ Tech used:
 - BcryptJS
 - Deployed to Heroku
 
-My aim with this project was to connect bring together React and the Express backend into one application. Since my last React app, I planned to add complexity with multiple components needing the same state data, making the project more modular, and hooking the app up with a database. Challenge with this complexity came when the order component loaded user ticket data immediately from local storage, but crashed the application when looking for movie information. Movie data was being loaded from firebase and, thus, was not readily available. A quick addition of returning null in the event of no movie data solved the issue.
+## Back-End and Front-End Communication
+
+My aim with this project was to bring together React and the Express backend into one application. Since my last major React project, I planned to add complexity with multiple components needing the same state data, making the project more modular, and hooking the app up with a database. Structurally, the app is contained within one Node project, with the front end’s subdirectory being run through a specific script in the package.json file. The two points communicate with each other through a REST API served up by the Express server and queried by the front end with axios.
 
 ## Secure Authentication
 
