@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../../models/User');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
 // Protected request using JWT
 router.get('/', (req, res, next) => {
@@ -10,12 +11,18 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/sign-up', (req, res, next) => {
-  const user = new User({
-    username: req.body.username,
-    password: req.body.password,
-  }).save((err) => {
+  // Encrypting
+  bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
+    // if err, do something
     if (err) return next(err);
-    res.json({ created: true });
+    // Saving User
+    const user = new User({
+      username: req.body.username,
+      password: hashedPassword,
+    }).save((err) => {
+      if (err) return next(err);
+      res.json({ created: true });
+    });
   });
 });
 

@@ -13,6 +13,7 @@ const movieRoutes = require('./routes/api/movies');
 const theaterRoutes = require('./routes/api/theater');
 const secretRoutes = require('./routes/api/secret');
 const UserModel = require('./models/User');
+const bcrypt = require('bcryptjs');
 
 const app = express();
 
@@ -39,12 +40,23 @@ passport.use(
     },
     function (username, password, cb) {
       //this one is typically a DB call. Assume that the returned user object is pre-formatted and ready for storing in JWT
-      return UserModel.findOne({ username, password })
+      return UserModel.findOne({ username })
         .then((user) => {
           if (!user) {
-            return cb(null, false, { message: 'Incorrect email or password.' });
+            return cb(null, false, { message: 'Incorrect email.' });
           }
-          return cb(null, user, { message: 'Logged In Successfully' });
+
+          bcrypt.compare(password, user.password, (err, res) => {
+            if (res) {
+              // passwords match! log user in
+              return cb(null, user);
+            } else {
+              // passwords do not match!
+              return cb(null, false, { msg: 'Incorrect password' });
+            }
+          });
+
+          // return cb(null, user, { message: 'Logged In Successfully' });
         })
         .catch((err) => cb(err));
     }
