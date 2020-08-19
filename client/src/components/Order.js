@@ -82,6 +82,10 @@ class Order extends Component {
     );
   };
 
+  renderBlankOrder = () => {
+    return <h2>You don't have any tickets yet!</h2>;
+  };
+
   render() {
     const movies = this.props.movies;
     const order = this.props.order;
@@ -94,6 +98,8 @@ class Order extends Component {
       // add to prev total
       return prevTotal + movieTotal;
     }, 0);
+
+    if (!keys.length) return this.renderBlankOrder();
 
     return (
       <section className="cart">

@@ -189,15 +189,6 @@ class App extends React.Component {
           />
         </main>
         {this.state.cartModalOpen && this.renderModal()}
-        <div className="right_pane">
-          {/* <UpdateMovies
-            movies={this.state.movies}
-            addMovie={this.addMovie}
-            updateMovie={this.updateMovie}
-            loadSampleMovies={this.loadSampleMovies}
-            deleteMovie={this.deleteMovie}
-          /> */}
-        </div>
       </div>
     );
   }
