@@ -249,7 +249,8 @@ main {
       transition: transform 0.4s ease;
       cursor: pointer;
 
-      &:hover {
+      &:hover,
+      &:focus {
         transform: scale(1.05);
         // box-sizing: content-box;
         border: 3px solid $yellow;

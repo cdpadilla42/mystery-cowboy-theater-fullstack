@@ -15,6 +15,13 @@ class MovieListing extends Component {
     selectMovie: PropTypes.func,
   };
 
+  handleKey = (e) => {
+    if (e.key === 'Enter') {
+      const movieKey = e.currentTarget.dataset.key;
+      this.props.selectMovie(movieKey);
+    }
+  };
+
   render() {
     const movies = this.props.movies;
     return (
@@ -27,7 +34,9 @@ class MovieListing extends Component {
                 <img
                   src={movies[movieKey].image}
                   key={movieKey}
+                  data-key={movieKey}
                   onClick={() => this.props.selectMovie(movieKey)}
+                  onKeyUp={this.handleKey}
                   alt=""
                   srcset=""
                   tabIndex="0"
