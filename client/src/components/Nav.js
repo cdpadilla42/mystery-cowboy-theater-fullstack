@@ -48,7 +48,7 @@ class Nav extends Component {
         <nav>
           <div className="nav__container">
             <a href={`/theater/${this.props.storeId}`} className="nav__logo">
-              Myster Cowboy Theater
+              Mystery Cowboy Theater
             </a>
             <a
               href={`/theater/${this.props.storeId}`}
