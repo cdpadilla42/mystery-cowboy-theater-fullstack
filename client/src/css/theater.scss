@@ -74,6 +74,10 @@ nav {
     &__logo {
       font-size: 2rem;
       font-weight: 700;
+
+      @media all and (max-width: 760px) {
+        font-size: 1rem;
+      }
     }
 
     &__location {
@@ -551,6 +555,7 @@ main {
       border: 3px solid $yellow;
       border-radius: 10px;
       max-width: 265px;
+      height: 390px;
     }
   }
 
