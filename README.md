@@ -24,7 +24,7 @@ My aim with this project was to bring together React and the Express backend int
 
 ## Secure Authentication
 
-Editing movies requires being logged in as the theater owner. There are both front end and back end security measures to ensure that the appropriate user is authenticated before editing. While contained within the same project, the authentication process treats the front-end and back-end as separate entities needing to communicate with one another. The best solution for this was to use JSON Web Tokens. I’ve used Passport to implement the creation and authentication of the token that users send in request headers through axios. To ensure passwords remain secure, bcrypt was brought into the project to encrypt newly created passwords and decode login requests.
+Editing movies requires being logged in as the theater owner. There are both client and server side security measures to ensure that the appropriate user is authenticated before editing. While contained within the same project, the authentication process treats the front-end and back-end as separate entities needing to communicate with one another. The best solution for this was to use JSON Web Tokens. I’ve used Passport to implement the creation and authentication of the token that users send in request headers through axios. To ensure passwords remain secure, bcrypt was brought into the project to encrypt newly created passwords and decode login requests.
 
 ## Demo Link
 
