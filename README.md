@@ -1,7 +1,5 @@
 # Mystery Cowboy Theater
 
-## Demo Link
-
 [View app in browser](https://mystery-cowboy-theater.herokuapp.com/theater/The-Domain)
 
 ## Full Stack MERN App for ordering tickets and performing CRUD operations
