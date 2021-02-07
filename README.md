@@ -6,7 +6,7 @@
 
 Mystery Cowboy Theater is a fictional single screen theater that loves showing exclusively [Mystery Science Theater 3000](https://en.wikipedia.org/wiki/Mystery_Science_Theater_3000) films and episodes! This application displays a movie selector, current ticket order, and a movie editor.
 
-This project fulfills all CRUD operations in two areas: ticket orders and films being screened. After being populated by the database, the two larger states are contained in the app component and data is shared down to the other supporting components to allow instant updating app-wide. State is maintained through two means: local storage for ticket orders and MongoDB for movie showings.
+This project fulfills all CRUD operations in two areas: ticket orders and films being screened. After being populated by the database, the application state is contained in the app component and data is shared down to the other supporting components to allow instant updating app-wide. State is maintained through two means: local storage for ticket orders and MongoDB for movie showings.
 
 Tech used:
 
