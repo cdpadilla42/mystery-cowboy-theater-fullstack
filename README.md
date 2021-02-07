@@ -22,7 +22,13 @@ Tech used:
 
 ## Back-End and Front-End Communication
 
-My aim with this project was to bring together React and the Express backend into one application. Since my last major React project, I planned to add complexity with multiple components needing the same state data, making the project more modular, and hooking the app up with a database. Structurally, the app is contained within one Node project, with the front end’s subdirectory being run through a specific script in the package.json file. The two points communicate with each other through a REST API served up by the Express server and queried by the front end with axios.
+My aim with this project was to bring together React and the Express backend into one application. Since my last major React project, I planned to add complexity with multiple components needing the same state data, making the project more modular, and hooking the app up with a database.
+
+Structurally, the app is contained within one Node project, with the front end’s subdirectory being run through a specific script in the package.json file. Heroku, the deployment platform, runs this particular script so that it can build and serve up the React application for the client as well as run the Express application. The two points communicate with each other through a REST API served up by the Express server and queried by the front end with axios.
+
+## A brief note about CORS
+
+A challenge in the project was discovering that, although the application was wrapped in the same project, a way to handle Cross-Origin Resource Sharing was required to allow data to be passed from the client to the server. Thankyfully, the solution simply required bringing in a middleware package to handle this. Currently, the application does not use a custom options, however, a potential next step for a more robust application with sensitive data would be to specify approved origins with the CORS package configuration.
 
 ## Secure Authentication
 
