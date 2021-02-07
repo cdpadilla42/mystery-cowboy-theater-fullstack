@@ -1,5 +1,4 @@
 const express = require('express');
-const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const passportJWT = require('passport-jwt');
@@ -9,7 +8,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
 require('dotenv').config();
-const movieRoutes = require('./routes/api/movies');
 const theaterRoutes = require('./routes/api/theater');
 const secretRoutes = require('./routes/api/secret');
 const UserModel = require('./models/User');
@@ -23,7 +21,6 @@ app.use(cors());
 // DB Config
 
 const db = process.env.DB_URI;
-// db.on('error', console.error.bind(console, 'Mongo Connection Error'));
 
 // Connect to Mongo
 mongoose
@@ -55,8 +52,6 @@ passport.use(
               return cb(null, false, { msg: 'Incorrect password' });
             }
           });
-
-          // return cb(null, user, { message: 'Logged In Successfully' });
         })
         .catch((err) => cb(err));
     }
@@ -71,29 +66,9 @@ passport.use(
     },
     function (jwtPayload, cb) {
       return cb(null, { success: true });
-      //find the user in db if needed. This functionality may be omitted if you store everything you'll need in JWT payload.
-      return User.findOneById(jwtPayload.id)
-        .then((user) => {
-          return cb(null, user);
-        })
-        .catch((err) => {
-          return cb(err);
-        });
     }
   )
 );
-
-// Initial passport logic for sessions
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: true,
-//   })
-// // );
-// app.use(passport.initialize());
-// app.use(passport.session());
-// app.use(express.urlencoded({ extended: false }));
 
 // Use routes
 app.use('/api', theaterRoutes);
