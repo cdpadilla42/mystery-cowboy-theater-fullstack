@@ -82,8 +82,8 @@ app.use(
 
 if (process.env.NODE_ENV === 'production') {
   // Set static folder
-  app.use(express.static('/static'));
-  // app.use(express.static('/var/app/current/client/build'));
+  // app.use(express.static('/static'));
+  app.use(express.static('/var/app/current/client/build'));
 
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
