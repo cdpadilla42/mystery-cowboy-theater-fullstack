@@ -18,7 +18,7 @@ Tech used:
 - Custom SCSS
 - Passport
 - BcryptJS
-- Deployed to Heroku
+- Deployed to AWS Elastic Beanstalk
 
 ## Back-End and Front-End Communication
 
