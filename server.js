@@ -79,19 +79,22 @@ app.use(
 );
 
 // Serve Static Assets if in Production
+app.use(express.static(path.resolve(__dirname, 'client', 'build')));
 
-if (process.env.NODE_ENV === 'production') {
-  // Set static folder
-  app.use(express.static('/static'));
-  // app.use(express.static('/var/app/current/client/build'));
+// // Old Way
+// if (process.env.NODE_ENV === 'production') {
+//   // Set static folder
+//   app.use(express.static('/static'));
+//   // app.use(express.static('/var/app/current/client/build'));
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
-}
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+//   });
+// }
 
 // Ports
 
-const port = process.env.PORT || 8081;
+const port = process.env.PORT || 7777;
+// const port = process.env.PORT || 8081;
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
