@@ -2,7 +2,7 @@
 
 ## Full Stack MERN App for ordering tickets and performing CRUD operations
 
-[View app in browser](http://mysterycowboytheater-env.eba-tdkgfkfh.us-east-1.elasticbeanstalk.com/theater/The-Domain)
+[View app in browser](https://mystery-cowboy-theater-fullstack.onrender.com/theater/The-Domain)
 
 Mystery Cowboy Theater is a fictional single screen theater that loves showing exclusively [Mystery Science Theater 3000](https://en.wikipedia.org/wiki/Mystery_Science_Theater_3000) films and episodes! This application displays a movie selector, current ticket order, and a movie editor.
 
