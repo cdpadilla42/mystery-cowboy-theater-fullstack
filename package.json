@@ -11,7 +11,8 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
-    "sass": "sass --watch ./client/src/css/theater.scss ./client/src/css/theater.css"
+    "sass": "sass --watch ./client/src/css/theater.scss ./client/src/css/theater.css",
+    "start-render": "node server.js"
   },
   "author": "Chris Padilla",
   "dependencies": {
